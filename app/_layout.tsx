@@ -4,9 +4,11 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect } from 'react';
+import { useColorScheme } from 'react-native';
 import * as Sentry from '@sentry/react-native';
 import { ToastProvider } from '@/components/Toast';
 import { useSession } from '@/hooks/useSession';
+import { usePreferencesStore } from '@/stores';
 
 Sentry.init({
   dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
@@ -25,10 +27,18 @@ const queryClient = new QueryClient({
   },
 });
 
+function useResolvedColorScheme() {
+  const systemScheme = useColorScheme();
+  const preference = usePreferencesStore((s) => s.colorScheme);
+  if (preference === 'system') return systemScheme ?? 'light';
+  return preference;
+}
+
 function RootLayout() {
   const { isAuthenticated, isGuest, isLoading } = useSession();
   const segments = useSegments();
   const router = useRouter();
+  const colorScheme = useResolvedColorScheme();
 
   useEffect(() => {
     if (isLoading) return;
@@ -47,7 +57,7 @@ function RootLayout() {
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         <ToastProvider>
-          <StatusBar style="auto" />
+          <StatusBar style={colorScheme === 'dark' ? 'light' : 'dark'} />
           <Slot />
         </ToastProvider>
       </SafeAreaProvider>
