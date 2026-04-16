@@ -1,19 +1,38 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { useState, useCallback } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import type { MenuItem } from '@/types';
+import { TAQUERIA_CATEGORIES } from '@/constants/menu';
+import { useCartStore } from '@/stores';
+import { formatPrice } from '@/utils/calculateItemTotal';
+import { MenuScreen } from '@/components/MenuScreen';
+import { ItemDetailSheet } from '@/components/ItemDetailSheet';
+import { CartFAB } from '@/components/CartFAB';
 
 export default function TaqueriaScreen() {
   const insets = useSafeAreaInsets();
+  const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+  const itemCount = useCartStore((s) => s.getItemCount());
+  const subtotal = useCartStore((s) => s.getSubtotal());
+
+  const handleItemPress = useCallback((item: MenuItem) => {
+    setSelectedItem(item);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setSelectedItem(null);
+  }, []);
 
   return (
-    <View className="flex-1 bg-bg" style={{ paddingTop: insets.top }}>
-      <Text className="px-4 py-3 text-2xl font-bold text-text-primary">
-        Taqueria
-      </Text>
-      <View className="flex-1 items-center justify-center">
-        <Text className="text-base text-text-secondary">
-          Menu coming in Epic 4
-        </Text>
-      </View>
-    </View>
+    <GestureHandlerRootView style={{ flex: 1, paddingTop: insets.top }}>
+      <MenuScreen categories={TAQUERIA_CATEGORIES} onItemPress={handleItemPress} />
+
+      {selectedItem ? (
+        <ItemDetailSheet item={selectedItem} onClose={handleClose} />
+      ) : null}
+
+      <CartFAB itemCount={itemCount} subtotal={formatPrice(subtotal)} />
+    </GestureHandlerRootView>
   );
 }
