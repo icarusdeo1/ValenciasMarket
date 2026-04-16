@@ -1,8 +1,10 @@
 import { Tabs } from 'expo-router';
+import { useColorScheme } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const BRAND_PRIMARY = '#C41E24';
 const TEXT_SECONDARY = '#6B6B6B';
+const TEXT_SECONDARY_DARK = '#A0A0A0';
 
 type TabIconProps = {
   name: React.ComponentProps<typeof Ionicons>['name'];
@@ -15,15 +17,19 @@ function TabIcon({ name, color, size }: TabIconProps) {
 }
 
 export default function TabsLayout() {
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: BRAND_PRIMARY,
-        tabBarInactiveTintColor: TEXT_SECONDARY,
+        tabBarInactiveTintColor: isDark ? TEXT_SECONDARY_DARK : TEXT_SECONDARY,
         tabBarStyle: {
           borderTopWidth: 0.5,
-          borderTopColor: '#E0E0E0',
+          borderTopColor: isDark ? '#333333' : '#E0E0E0',
+          backgroundColor: isDark ? '#1E1E1E' : '#FFFFFF',
           elevation: 8,
         },
         tabBarLabelStyle: {

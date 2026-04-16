@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, ScrollView, KeyboardAvoidingView, Platform, useColorScheme } from 'react-native';
 import { useCallback, useMemo, useState, useEffect } from 'react';
 import BottomSheet, { BottomSheetBackdrop } from '@gorhom/bottom-sheet';
 import { Image } from 'expo-image';
@@ -21,6 +21,7 @@ type ItemDetailSheetProps = {
 
 export function ItemDetailSheet({ item, editingCartItem, onClose }: ItemDetailSheetProps) {
   const snapPoints = useMemo(() => ['60%', '90%'], []);
+  const colorScheme = useColorScheme();
   const addItem = useCartStore((s) => s.addItem);
   const updateItem = useCartStore((s) => s.updateItem);
   const { show: showToast } = useToast();
@@ -126,7 +127,7 @@ export function ItemDetailSheet({ item, editingCartItem, onClose }: ItemDetailSh
       onClose={onClose}
       backdropComponent={renderBackdrop}
       handleIndicatorStyle={{ backgroundColor: '#A0A0A0' }}
-      backgroundStyle={{ backgroundColor: '#FFFFFF' }}
+      backgroundStyle={{ backgroundColor: colorScheme === 'dark' ? '#1E1E1E' : '#FFFFFF' }}
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
