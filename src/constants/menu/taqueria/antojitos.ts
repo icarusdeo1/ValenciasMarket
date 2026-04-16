@@ -1,0 +1,80 @@
+import type { MenuItem } from '@/types';
+import { TACO_MEAT_CHOICE, NACHO_MEAT, EXTRA_NACHO_MEAT } from '@/constants/optionGroups';
+
+export const antojitos: MenuItem[] = [
+  {
+    id: 'torta',
+    name: 'Torta',
+    price: 11.99,
+    category: 'Antojitos',
+    channel: 'taqueria',
+    optionGroups: [TACO_MEAT_CHOICE],
+  },
+  {
+    id: 'torta-de-milanesa',
+    name: 'Torta de Milanesa',
+    price: 13.99,
+    category: 'Antojitos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'torta-de-jamon',
+    name: 'Torta de Jamon',
+    price: 12.99,
+    category: 'Antojitos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'torta-de-pechuga',
+    name: 'Torta de Pechuga',
+    price: 13.59,
+    category: 'Antojitos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'taco-salad',
+    name: 'Taco Salad',
+    price: 13.59,
+    category: 'Antojitos',
+    channel: 'taqueria',
+    optionGroups: [TACO_MEAT_CHOICE],
+  },
+  {
+    id: 'tamal',
+    name: 'Tamal',
+    price: 3.75,
+    category: 'Antojitos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'tostada',
+    name: 'Tostada',
+    price: 4.99,
+    category: 'Antojitos',
+    channel: 'taqueria',
+    optionGroups: [TACO_MEAT_CHOICE],
+  },
+  {
+    id: 'sope',
+    name: 'Sope',
+    price: 4.39,
+    category: 'Antojitos',
+    channel: 'taqueria',
+    optionGroups: [TACO_MEAT_CHOICE],
+  },
+  {
+    id: 'nachos-no-meat',
+    name: 'Nachos (No meat)',
+    price: 11.99,
+    category: 'Antojitos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'nachos-with-meat',
+    name: 'Nachos (With meat)',
+    price: 14.99,
+    category: 'Antojitos',
+    channel: 'taqueria',
+    optionGroups: [NACHO_MEAT, EXTRA_NACHO_MEAT],
+  },
+];

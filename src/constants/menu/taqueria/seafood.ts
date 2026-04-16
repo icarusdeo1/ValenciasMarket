@@ -1,0 +1,97 @@
+import type { MenuItem } from '@/types';
+import { TORTILLA_CHOICE } from '@/constants/optionGroups';
+
+export const seafood: MenuItem[] = [
+  {
+    id: 'fajitas-de-camaron',
+    name: 'Fajitas de Camaron',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'camarones-a-la-diabla',
+    name: 'Camarones a la Diabla',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'camarones-al-mojo-de-ajo',
+    name: 'Camarones al Mojo de Ajo',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'camarones-rancheros',
+    name: 'Camarones Rancheros',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'camarones-empanizados',
+    name: 'Camarones Empanizados',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'mojarra',
+    name: 'Mojarra',
+    price: 16.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'caldo-de-camaron',
+    name: 'Caldo de Camaron',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'caldo-de-pescado',
+    name: 'Caldo de Pescado',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'sopa-de-mariscos',
+    name: 'Sopa de Mariscos',
+    price: 19.79,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: '7-mares',
+    name: '7 Mares',
+    price: 17.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'filete-de-pescado-empanizado',
+    name: 'Filete de Pescado Empanizado',
+    price: 16.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'coctel-de-camaron',
+    name: 'Coctel de Camaron',
+    price: 16.59,
+    category: 'Seafood',
+    channel: 'taqueria',
+  },
+  {
+    id: 'tostada-de-ceviche',
+    name: 'Tostada de Ceviche',
+    price: 6.99,
+    category: 'Seafood',
+    channel: 'taqueria',
+    optionGroups: [TORTILLA_CHOICE],
+  },
+];

@@ -1,0 +1,85 @@
+import type { MenuItem } from '@/types';
+import { BURRITO_MEAT_CHOICE, EXTRA_BURRITO_MEAT } from '@/constants/optionGroups';
+
+export const burritos: MenuItem[] = [
+  {
+    id: 'regular-burrito',
+    name: 'Regular Burrito',
+    price: 11.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+    optionGroups: [BURRITO_MEAT_CHOICE, EXTRA_BURRITO_MEAT],
+  },
+  {
+    id: 'super-burrito',
+    name: 'Super Burrito',
+    price: 13.49,
+    category: 'Burritos',
+    channel: 'taqueria',
+    optionGroups: [BURRITO_MEAT_CHOICE, EXTRA_BURRITO_MEAT],
+  },
+  {
+    id: 'burrito-mojado-wet-burrito',
+    name: 'Burrito Mojado / Wet Burrito',
+    price: 14.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'valencias-burrito',
+    name: 'Valencias Burrito',
+    price: 11.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'chimichanga',
+    name: 'Chimichanga',
+    price: 15.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+    optionGroups: [BURRITO_MEAT_CHOICE, EXTRA_BURRITO_MEAT],
+  },
+  {
+    id: 'bean-and-cheese-burrito',
+    name: 'Bean & Cheese Burrito',
+    price: 7.49,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'burrito-a-la-diabla',
+    name: 'Burrito a la Diabla',
+    price: 14.89,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'shrimp-burrito',
+    name: 'Shrimp Burrito',
+    price: 13.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'shrimp-super-burrito',
+    name: 'Shrimp Super Burrito',
+    price: 14.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'fish-burrito',
+    name: 'Fish Burrito',
+    price: 12.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'fish-super-burrito',
+    name: 'Fish Super Burrito',
+    price: 13.99,
+    category: 'Burritos',
+    channel: 'taqueria',
+  },
+];
