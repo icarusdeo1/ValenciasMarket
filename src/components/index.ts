@@ -15,3 +15,4 @@ export { CategoryBanner } from './CategoryBanner';
 export { AgeVerificationModal } from './AgeVerificationModal';
 export { MenuScreen } from './MenuScreen';
 export { ItemDetailSheet } from './ItemDetailSheet';
+export { CartItemRow } from './CartItemRow';
