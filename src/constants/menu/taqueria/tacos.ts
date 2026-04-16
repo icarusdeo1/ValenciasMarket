@@ -1,0 +1,97 @@
+import type { MenuItem } from '@/types';
+import { TACO_MEAT_CHOICE } from '@/constants/optionGroups';
+
+export const tacos: MenuItem[] = [
+  {
+    id: 'asada-steak-taco',
+    name: 'Asada/Steak Taco',
+    price: 2.99,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'pollo-chicken-taco',
+    name: 'Pollo/Chicken Taco',
+    price: 2.99,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'barbacoa-shredded-beef-taco',
+    name: 'Barbacoa/Shredded Beef Taco',
+    price: 2.99,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'carnitas-shredded-fried-pork-taco',
+    name: 'Carnitas/Shredded Fried Pork Taco',
+    price: 2.99,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'al-pastor-marinated-pork-taco',
+    name: 'Al Pastor/Marinated Pork Taco',
+    price: 2.99,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'chorizo-mexican-sausage-taco',
+    name: 'Chorizo/Mexican Sausage Taco',
+    price: 2.99,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'pescado-fish-taco',
+    name: 'Pescado/Fish Taco',
+    price: 3.89,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'shrimp-taco',
+    name: 'Shrimp Taco',
+    price: 3.89,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'lengua-taco',
+    name: 'Lengua Taco',
+    price: 3.59,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'buche-taco',
+    name: 'Buche Taco',
+    price: 3.59,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'tripa-taco',
+    name: 'Tripa Taco',
+    price: 3.59,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+  {
+    id: 'super-taco',
+    name: 'Super Taco',
+    price: 4.59,
+    category: 'Tacos',
+    channel: 'taqueria',
+    optionGroups: [TACO_MEAT_CHOICE],
+  },
+  {
+    id: '3-quesabirria-tacos',
+    name: '3 Quesabirria Tacos',
+    price: 13.50,
+    category: 'Tacos',
+    channel: 'taqueria',
+  },
+];
