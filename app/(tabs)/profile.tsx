@@ -103,23 +103,17 @@ export default function ProfileScreen() {
         <MenuItemRow
           icon="notifications-outline"
           label="Notification Preferences"
-          onPress={() => {
-            // Settings screen lands in task 9.1.5
-          }}
+          onPress={() => router.push('/settings')}
         />
         <MenuItemRow
           icon="settings-outline"
           label="App Settings"
-          onPress={() => {
-            // Settings screen lands in task 9.1.5
-          }}
+          onPress={() => router.push('/settings')}
         />
         <MenuItemRow
           icon="help-circle-outline"
           label="Help & Support"
-          onPress={() => {
-            // Help screen lands in task 9.1.6
-          }}
+          onPress={() => router.push('/help')}
         />
       </View>
 
