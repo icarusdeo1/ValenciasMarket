@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "doctor": "expo-doctor",
     "typecheck": "tsc --noEmit",
-    "lint": "expo lint",
+    "lint": "eslint app src",
     "test": "jest"
   },
   "dependencies": {
@@ -46,6 +46,8 @@
     "@types/jest": "^30.0.0",
     "@types/react": "~19.1.0",
     "babel-plugin-module-resolver": "^5.0.3",
+    "eslint": "^9.39.4",
+    "eslint-config-expo": "~10.0.0",
     "jest": "^30.3.0",
     "ts-jest": "^29.4.9",
     "typescript": "~5.9.2"
