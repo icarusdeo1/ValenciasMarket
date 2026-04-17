@@ -1,3 +1,8 @@
+jest.mock('expo-crypto', () => {
+  let seq = 0;
+  return { randomUUID: () => `test-uuid-${++seq}` };
+});
+
 jest.mock('react-native-mmkv', () => {
   class MockMMKV {
     private store = new Map<string, boolean | string | number>();
