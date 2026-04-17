@@ -289,6 +289,42 @@ Then add a **Changes Summary** section to this file listing each commit hash, th
 
 ---
 
-## Stop point
+## Phase 4 — Changes Summary
 
-Per the audit prompt's explicit gate (*"Stop and confirm priorities with me before writing code"*), I'm halting here. Please confirm the Phase 3 order above or re-rank / drop items before I begin fixes.
+Phase 3 executed on `chore/audit-fixes` branch. Every fix landed as its own commit with tests where applicable.
+
+| ID | Commit | What changed | Verification |
+|----|--------|--------------|--------------|
+| H2 | `045dc57` | Added `__tests__/unit/menuData.test.ts` — 21 tests covering price > 0, unique ids, option group invariants, 15 templates, Taqueria=109 items, channel integrity, beer/beef flags, upcharge rules | jest 21/21 pass |
+| H3 | `db366c4` | Added `__tests__/unit/useCartStore.test.ts` with inline `jest.mock` for `react-native-mmkv` — 15 tests covering add/remove/update/qty/cap/staleness/clear/subtotal | jest 15/15 pass |
+| H4 | `78aff72` | Added `__tests__/unit/isBusinessOpen.test.ts` — 17 tests across weekday/weekend/DST with UTC-constructed LA-timezone inputs | jest 17/17 pass |
+| M1 | `b9c7cc3` | Extracted `useAgeVerifiedStore` from `app/(tabs)/market.tsx` to `src/stores/useAgeVerifiedStore.ts`, exported via `src/stores/index.ts` | tsc clean; behavior identical |
+| M2 | `cf98d9c` | Rewrote CLAUDE.md upcharge bullet: 4 distinct rules (Burrito Lengua/Tripas +$1.99, Nacho +$0.99, Extra Burrito +$2.59, Extra Quesadilla +$1.99) | Docs now match `src/constants/optionGroups.ts` |
+| M3 | `bcf8096` | Replaced `null as Order \| null` cast with `useOrder(id)` + `useOrders()` TanStack Query hooks (disabled until Supabase wired) | tsc clean; removes one `eslint-disable` |
+| M4 | `29fd642` | Swapped module-level `let nextCartItemId = Date.now()` for `expo-crypto`'s `randomUUID()`; added `jest.mock` for expo-crypto | jest 61/61 pass; no module mutable state |
+| L1 | `1b26538` | Committed `eslint.config.js` (ESLint 9 flat config + `eslint-config-expo`), `.prettierrc.json`, pointed `npm run lint` at `eslint app src`. Fixed 4 warnings surfaced (unused imports × 3, `Array<T>` → `T[]`) | eslint 0 problems |
+| M5 | `1b26538` | Added header comment to `.env.example` explaining `EXPO_PUBLIC_*` bundling behavior and where secrets actually belong (EAS / Supabase Edge Function secrets) | Doc only |
+
+### Final baseline
+
+| Check | Before | After |
+|-------|--------|-------|
+| `npx tsc --noEmit` | clean | **clean** |
+| `npx jest` | 8 tests / 1 suite | **61 tests / 4 suites** |
+| `npm run lint` | (implicit `expo lint`, never run) | **0 errors, 0 warnings** |
+| `any` / `@ts-ignore` | 0 / 0 | **0 / 0** |
+| `console.log` | 0 | **0** |
+| Module-level mutable state | 1 (cart id counter) | **0** |
+
+### Deferred / not done this pass
+
+- **H1 — SDK 55 upgrade**. Dependency change needs owner sign-off and a fresh `expo-doctor` baseline on the upgraded toolchain. Tracked in Known Issues.
+- **L2 — Hardcoded user-facing strings**. Formally deferred to PRD task 14.8 (Post-MVP i18n with `expo-localization` + `i18next`). Fixing earlier would churn twice.
+- **L3 — Cart JSON persistence on every mutation**. Inside MMKV's perf envelope at current scale. Revisit only if profiling flags it.
+- **L4 — `CategoryTabBar` inline `onPress`**. ≤14 tabs max — negligible impact. Skip.
+- **L5 — Missing `accessibilityLabel` on OpenClosedBadge / some Cards**. Folded into PRD task 11.2.1 (accessibility pass).
+
+### New issues discovered during Phase 3
+
+None. Every fix was contained to its stated scope; no new smells surfaced.
+
