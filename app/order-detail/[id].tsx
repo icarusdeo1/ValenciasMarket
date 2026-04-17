@@ -5,15 +5,12 @@ import { Ionicons } from '@expo/vector-icons';
 import { formatPrice } from '@/utils/calculateItemTotal';
 import { Card } from '@/components/Card';
 import { EmptyState } from '@/components/EmptyState';
-import type { Order } from '@/types';
+import { useOrder } from '@/hooks/useOrder';
 
 export default function OrderDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const insets = useSafeAreaInsets();
-
-  // TanStack Query fetch by id lands with Supabase
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
-  const order = null as Order | null;
+  const { data: order } = useOrder(id);
 
   return (
     <View className="flex-1 bg-bg dark:bg-bg-dark" style={{ paddingTop: insets.top }}>

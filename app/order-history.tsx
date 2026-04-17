@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { formatPrice } from '@/utils/calculateItemTotal';
 import { EmptyState } from '@/components/EmptyState';
 import { Card } from '@/components/Card';
+import { useOrders } from '@/hooks/useOrders';
 import type { Order, OrderStatus } from '@/types';
 
 const STATUS_LABELS: Record<OrderStatus, { label: string; color: string }> = {
@@ -57,8 +58,7 @@ function OrderRow({ order }: { order: Order }) {
 export default function OrderHistoryScreen() {
   const insets = useSafeAreaInsets();
 
-  // TanStack Query hook for orders lands in Epic 9 with Supabase
-  const orders: Order[] = [];
+  const { data: orders = [] } = useOrders();
 
   return (
     <View className="flex-1 bg-bg dark:bg-bg-dark" style={{ paddingTop: insets.top }}>
