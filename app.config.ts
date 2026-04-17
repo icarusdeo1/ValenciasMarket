@@ -8,7 +8,6 @@ const config: ExpoConfig = {
   orientation: 'portrait',
   icon: './assets/icon.png',
   userInterfaceStyle: 'automatic',
-  newArchEnabled: true,
   splash: {
     image: './assets/splash-icon.png',
     resizeMode: 'contain',
@@ -24,7 +23,6 @@ const config: ExpoConfig = {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#C41E24',
     },
-    edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: true,
   },
   web: {

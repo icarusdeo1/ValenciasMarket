@@ -316,9 +316,31 @@ Phase 3 executed on `chore/audit-fixes` branch. Every fix landed as its own comm
 | `console.log` | 0 | **0** |
 | Module-level mutable state | 1 (cart id counter) | **0** |
 
-### Deferred / not done this pass
+### H1 — SDK 55 upgrade (landed 2026-04-16)
 
-- **H1 — SDK 55 upgrade**. Dependency change needs owner sign-off and a fresh `expo-doctor` baseline on the upgraded toolchain. Tracked in Known Issues.
+Executed after owner sign-off on a separate branch `chore/H1-sdk-55-upgrade`:
+
+- `npx expo install expo@^55 --fix` pulled in Expo **55.0.15**, React Native **0.83.4**, React **19.2.0**, and realigned all `expo-*` peers to the `~55.0.*` range (expo-blur, expo-constants, expo-crypto, expo-font, expo-haptics, expo-image, expo-linking, expo-router, expo-status-bar).
+- `@sentry/react-native` bumped to `~7.11.0`, `eslint-config-expo` bumped to `~55.0.0`, `@types/react` to `~19.2.10`.
+- Reanimated 4.2.1 + `react-native-worklets` 0.7.2 picked up, gesture-handler 2.30.0, screens 4.23.0.
+- Added `expo.install.exclude: ["jest", "@types/jest"]` to `package.json` to keep the project on jest 30 (Expo's preset expected jest 29; all 61 tests verified green on jest 30).
+
+**SDK 55 config changes applied to `app.config.ts`:**
+- Removed `newArchEnabled: true` (New Architecture is always-on in SDK 55).
+- Removed `android.edgeToEdgeEnabled: true` (owned by the `react-native-edge-to-edge` plugin, which is already in the plugins array).
+
+**Verification post-upgrade:**
+
+| Check | Result |
+|-------|--------|
+| `npx tsc --noEmit` | clean |
+| `npx jest` | **61/61 passing, 4 suites** |
+| `npx expo-doctor` | **17/17 passing** |
+| `npm run lint` | **0 problems** |
+
+No runtime/device re-verification done yet — the upgrade is statically clean; a full smoke test on iOS Simulator + Android emulator should happen before the next EAS build.
+
+### Deferred / not done this pass
 - **L2 — Hardcoded user-facing strings**. Formally deferred to PRD task 14.8 (Post-MVP i18n with `expo-localization` + `i18next`). Fixing earlier would churn twice.
 - **L3 — Cart JSON persistence on every mutation**. Inside MMKV's perf envelope at current scale. Revisit only if profiling flags it.
 - **L4 — `CategoryTabBar` inline `onPress`**. ≤14 tabs max — negligible impact. Skip.
