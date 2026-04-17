@@ -222,7 +222,11 @@ Minimum **44 × 44 pt** for every interactive element. Audit in 11.2.2.
 ### Menu & Customization
 
 - All items pulled from `src/constants/menu/` (MVP). Prices must be > 0; every required option group must have ≥ 2 choices.
-- **Upcharges are precise — copy from PRD verbatim.** Lengua / Tripas / Extra Burrito Meat = +$1.99. Nachos meat = +$0.99 (NOT +$1.99). Quesadilla Extra Meat = +$1.99 (NOT +$2.59).
+- **Upcharges are precise — copy from PRD verbatim.** These four are distinct groups with distinct prices; don't conflate them:
+  - **Burrito Meat Choice** — Lengua / Tripas = **+$1.99** each (choice-level upcharge on `burrito_meat_choice`).
+  - **Nacho Meat** — Lengua / Tripas = **+$0.99** each (choice-level upcharge on `nacho_meat`, NOT +$1.99).
+  - **Extra Burrito Meat** toggle (`extra_burrito_meat`) = **+$2.59** when Yes. Verified by TC-OPT-05: Regular Burrito $11.99 + Lengua $1.99 + Extra Meat $2.59 = $16.57.
+  - **Extra Quesadilla Meat** toggle (`extra_quesadilla_meat`) = **+$1.99** when Yes (NOT +$2.59 — quesadillas price this lower than burritos).
 - `calculateItemTotal(basePrice, selectedChoices, quantity)` is the single source of pricing. Every screen that shows a price ultimately goes through it. Tests in `__tests__/unit/` cover TC-OPT-04 through TC-OPT-08.
 - Chimichanga and similar items: confirm from PRD whether they accept option groups or are special-instructions-only. **Do not guess.**
 

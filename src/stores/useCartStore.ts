@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { randomUUID } from 'expo-crypto';
 import { storage } from './mmkv';
 import type { CartItem, MenuItem, SelectedChoice } from '@/types';
 
@@ -22,8 +23,6 @@ function loadCart(): { items: CartItem[]; lastUpdated: number } {
     return { items: [], lastUpdated: 0 };
   }
 }
-
-let nextCartItemId = Date.now();
 
 type CartState = {
   items: CartItem[];
@@ -60,7 +59,7 @@ export const useCartStore = create<CartState>((set, get) => {
       if (state.items.length >= MAX_CART_ITEMS) return false;
 
       const newItem: CartItem = {
-        cartItemId: String(nextCartItemId++),
+        cartItemId: randomUUID(),
         menuItem,
         selectedChoices,
         specialInstructions,

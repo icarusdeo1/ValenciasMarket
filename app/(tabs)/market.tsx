@@ -1,24 +1,14 @@
-import { View } from 'react-native';
 import { useState, useCallback } from 'react';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { create } from 'zustand';
 import type { MenuItem } from '@/types';
 import { MARKET_CATEGORIES } from '@/constants/menu';
-import { useCartStore } from '@/stores';
+import { useCartStore, useAgeVerifiedStore } from '@/stores';
 import { formatPrice } from '@/utils/calculateItemTotal';
 import { MenuScreen } from '@/components/MenuScreen';
 import { ItemDetailSheet } from '@/components/ItemDetailSheet';
 import { CartFAB } from '@/components/CartFAB';
 import { AgeVerificationModal } from '@/components/AgeVerificationModal';
-
-const useAgeVerifiedStore = create<{
-  verified: boolean;
-  setVerified: () => void;
-}>((set) => ({
-  verified: false,
-  setVerified: () => set({ verified: true }),
-}));
 
 export default function MarketScreen() {
   const insets = useSafeAreaInsets();

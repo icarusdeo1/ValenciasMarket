@@ -6,7 +6,6 @@ import { isBusinessOpen, getBusinessHoursDisplay } from '@/utils';
 import { usePreferencesStore, useCartStore } from '@/stores';
 import { formatPrice } from '@/utils/calculateItemTotal';
 import { Card } from '@/components/Card';
-import { Button } from '@/components/Button';
 import { CartFAB } from '@/components/CartFAB';
 
 const PHONE = '(916) 729-2926';

@@ -68,7 +68,7 @@ export function MenuScreen({ categories, onItemPress }: MenuScreenProps) {
   );
 
   const handleViewableItemsChanged = useCallback(
-    ({ viewableItems }: { viewableItems: Array<{ item: SectionItem }> }) => {
+    ({ viewableItems }: { viewableItems: { item: SectionItem }[] }) => {
       const firstHeader = viewableItems.find((v) => v.item.type === 'header');
       if (firstHeader && firstHeader.item.type === 'header') {
         const idx = filtered.findIndex(
